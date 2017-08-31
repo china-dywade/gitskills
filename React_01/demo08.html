@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <title>react.children方法的学习</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/jsx">
+  var NotesList = React.createClass({
+    render: function() {
+      return (
+        <ol>
+          {
+            React.Children.map(this.props.children, function (child) {
+                    return <li>{child}</li>;
+                })
+          }
+        </ol>
+      );
+    }
+  });
+
+  React.render(
+    <NotesList>
+      <span>hello</span>
+      <span>hello</span>
+    </NotesList>,
+    document.getElementById('example')
+  );
+</script>
+
+
+</body>
+</html>

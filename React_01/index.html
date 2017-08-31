@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <title>Hello World</title>
+</head>
+
+<body>
+    <div class="app">
+        <h1>HelloWorld</h1>
+        <p id="device_info">正在获取设备信息</p>
+        <button onclick="startWatch()"> 开始监听 </button>
+        <button onclick="stopWatch()"> 结束监听 </button>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+//        存储上次的加速度信息，和本次作对比，才能判断是否要改变背景色
+        var x1=0,y1=0,z1= 0,x2= 0,y2= 0,z2=0;
+
+        setInterval(function () {
+
+            var change = Math.abs(x2-x1+y2-y1+z2-z1);
+            if(change > 25)
+            {
+              document.getElementById("device_info").style.backgroundColor=getRandomColor();
+            }
+
+            x2 = x1;
+            y2 = y1;
+            z2 = z1;
+
+        },100);
+
+
+        function startWatch(){
+            navigator.accelerometer.watchAcceleration(function (acce) {
+
+                    x1 = acce.x;
+                    y1 = acce.y;
+                    z1 = acce.z;
+
+            }, function () {
+                alert("获取加速度信息失败");
+            },{frequency:300});
+        }
+
+        function stopWatch(){
+//            navigator.accelerometer.clearWatch()
+        }
+
+        function getRandomColor(){
+
+            var r = Math.floor(Math.random()*256);
+            var g = Math.floor(Math.random()*256);
+            var b = Math.floor(Math.random()*256);
+
+            var r_16 = r.toString(16);
+            var g_16 = r.toString(16);
+            var b_16 = r.toString(16);
+
+            return "#"+r_16+g_16_b_16;
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

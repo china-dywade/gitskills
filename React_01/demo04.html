@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <title>复合组件的基本使用方法</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+
+    var Tarena = React.createClass({
+
+    render:function(){
+        return(
+            <div>
+                <Title/>
+                <Link/>
+            </div>
+        )
+    }
+
+    })
+
+
+    var Title = React.createClass({
+    render:function(){
+        return (<h1> 哇哦教育 </h1>);
+    }
+    })
+
+
+    var Link = React.createClass({
+        render:function(){
+            return (<a href="www.tmooc.cn">tmooc</a>)
+        }
+    })
+
+    ReactDOM.render
+    (<Tarena/>,document.getElementById('example'));
+
+</script>
+
+
+</body>
+</html>

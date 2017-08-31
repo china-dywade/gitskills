@@ -1,0 +1,166 @@
+React 
+1、什么是React
+React（React.js/ReactJS）是一个开源的js库，为数据提供渲染HTML视图
+它由FB、Instagram 个人开发者和一些企业在维护着。
+什么公司在用：
+国外：facebook、airbnb、uber。。。
+国内：阿里、大搜车、去哪儿。。。
+
+
+2、为什么会有React？
+React 起源于FB内部的项目，newsfeed。
+Instagram 
+13年5月 JSConf US React宣布开源
+
+FB 数据变化引起两个问题：
+
+大量的DOM操作（自动操作DOM）
+逻辑复杂（组件 将状态和内容对应起来）
+
+3、React历史
+
+11年 FB newsfeed
+12 Instagram
+13.5 JSConf 宣布开源
+14年 github 旗舰项目（star>1w
+）
+15年 reactNative 构建原生应用
+提出自己的理念（learn once ，write anywhere）
+16 发布v15版本现在依然不够稳定
+
+4、React的特点
+声明式设计：采用声明，描述应用。
+高效：虚拟的DOM，最大限度的减少与DOM的交互
+灵活
+组件化：复用性更好
+
+5、React学习
+中文社区 reactjs.cn
+菜鸟教程 （runoob.com）
+reactjs.org
+
+6、React核心思想
+封装组件，提高代码复用率，降低
+测试难度 代码复杂度也会降低
+
+乐高积木去拼装不同的物体，称之为“组件驱动开发”
+
+核心概念：
+①组件
+②JSX JavaScript+XML
+（用JSX语法取代传统的HTML模板，在JS中声明式描述UI）
+③virtualDOM
+
+diff算法
+
+④单向数据流
+
+7、第一个React
+
+react.js 核心库
+react-dom.js 提供与DOM相关的功能
+browser.js 将JSX语法转换成JS语法
+
+render是React最基本的方法，
+ReactDOM.render( html代码,DOM节点) 将HTML代码插入到指定的DOM节点。
+
+8、JSX语法
+JSX语法借鉴了XML标签打开和关闭的优点，提高组件的可读性，赋予React强大的表现力。
+
+基本的语法规则
+遇到HTML标签（<），就自动使用HTML解析，
+如果遇到代码块（{），会使用js来解析
+
+   ReactDOM.render
+    (<div>
+        <h1>{3+5}</h1>
+        <h1>{3*5}</h1>
+    </div>,document.getElementById("example"));
+
+11：21 - 11:31 
+10分钟 大家使用{}执行算数运算、逻辑运算、三目运算的使用
+
+9、组件
+React允许将代码封装成组件（component），然后像插入html标签一样，在网页中插入这个组件。
+
+React.createClass()用于生成一个组件类！
+
+变量HelloMsg是一个组件类，模板插入<HelloMsg/>，会自动生成一个HelloMsg实例。所有的组件必须有自己的render方法，用于输出组件。
+
+创建组件注意事项：
+1、大小写敏感，所创建的组件返回时大写开头
+2、只能包含一个顶层标签，否则是会报错的！！！
+3、必须指定render方法
+
+10、复合组件
+JSX赋予React强大的表现力，它允许我们使用类似HTML的语法来创建自定义组件以及 将各个组件整合在一起形成一个复合组件！
+
+复合组件的注意事项：
+如果业务需要指定样式的时候，className=‘’
+
+
+11、props对象
+组件的用法和原生HTML标签完全一致，可以加入<LoginWindow name='kkk'/>,可以在标签当中，放属性。
+this.props对象的属性与组件属性是一一对应，主要是实现父组件到子组件值得传递。
+当我们将HelloReact组件类放到DOM节点，会将HelloReact实例化，同时将设置的属性都赋值给this.props对象。
+
+练习：(3:37-3:50)
+将之前做的登录窗口，this.props修改：
+当调用LoginWindow，
+btnLeftName=""
+btnRightName=""
+inputNamePlaceHolder=""
+inputPwdPlaceHolder=""
+
+this.props.children 表示组件的所有子节点。
+undefined
+object
+array
+
+React.children.map(this.props.children,function(child){
+
+})
+
+定义一个组件，
+组件有多个子组件（同一组件）
+
+
+12、学习ref的使用
+
+组件并不是真实的DOM节点，存在内存中的数据结构，叫做虚拟DOM。
+
+获取真实DOM节点，需要使用ref属性。
+
+<input ref='name'>
+
+this.refs.name
+
+子组件中一些值传递给父组件。
+
+
+每日一练：
+
+定义组件a（input）
+定义组件b（button）
+
+main组件包含两个组件
+
+测试：b组件能够通过ref，得到a组件的值？
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

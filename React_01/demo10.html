@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <title>练习：ref属性的使用</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+/*
+   var MyComponent = React.createClass({
+        handlerClick:function(){
+            var numTop = this.refs.inputSthTop.value;
+            var numBottom = this.refs.inputSthBottom.value;
+            var numTotal = parseInt(numTop)+parseInt(numBottom);
+            alert("两者之和为:"+numTotal);
+        },
+        render:function(){
+            return (
+                <div>
+                    <input ref='inputSthTop' placeholder='请输入内容'/>
+                    <br/>
+                    <br/>
+                    <input ref='inputSthBottom' placeholder='请输入内容'/>
+                    <br/>
+                    <button
+                    onClick={this.handlerClick}> 点击获取两者之和 </button>
+                </div>
+            )
+        }
+    })
+
+    ReactDOM.render
+    (<MyComponent/>,
+    document.getElementById('example'));
+*/
+
+/*var Hello = React.createClass({
+  getInitialState: fun ction () {
+    return {
+      opacity: 1.0
+    };
+  },
+
+  componentDidMount: function () {
+    this.timer = setInterval(function () {
+      var opacity = this.state.opacity;
+      opacity -= .05;
+      if (opacity < 0.1) {
+        opacity = 1.0;
+      }
+      this.setState({
+        opacity: opacity
+      });
+    }.bind(this), 100);
+  },
+
+  render: function () {
+    return (
+      <div style={{opacity: this.state.opacity}}>
+        Hello {this.props.name}
+      </div>
+    );
+  }
+});
+
+ReactDOM.render(
+  <Hello name="world"/>,
+  document.body
+);*/
+
+/*var UserGist = React.createClass({
+  getInitialState: function() {
+    return {
+      username: '',
+      lastGistUrl: ''
+    };
+  },
+
+  componentDidMount: function() {
+    $.get(this.props.source, function(result) {
+      var lastGist = result[0];
+      if (this.isMounted()) {
+        this.setState({
+          username: lastGist.owner.login,
+          lastGistUrl: lastGist.html_url
+        });
+      }
+    }.bind(this));
+  },
+
+  render: function() {
+    return (
+      <div>
+        {this.state.username}'s last gist is
+        <a href={this.state.lastGistUrl}>here</a>.
+      </div>
+    );
+  }
+});
+
+ReactDOM.render(
+  <UserGist source="https://api.github.com/users/octocat/gists" />,
+  document.body
+);
+*/
+
+
+var Input = React.createClass({
+  getInitialState: function() {
+    return {value: 'Hello!'};
+  },
+  handleChange: function(event) {
+    this.setState({value: event.target.value});
+  },
+  render: function () {
+    var value = this.state.value;
+    return (
+      <div>
+        <input type="text" value={value} onChange={this.handleChange} />
+        <p>{va</p>
+      </div>
+    );
+  }
+});
+
+ReactDOM.render(
+	<Input/>,
+	document.body
+);
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
